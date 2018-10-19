@@ -25,10 +25,10 @@ gitlab-runner register --non-interactive \
                        --url ${GITLAB_URL} \
                        --registration-token ${GITLAB_RUNNER_TOKEN} \
                        --executor docker \
-                       --name "runner" \
+                       --name "runner-${HOSTNAME}" \
                        --output-limit "20480" \
                        --docker-image "docker:latest" \
-                       --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
+                       --docker-privileged
 		       ${GITLAB_REGISTER_ARGS}
 
 # setup handlers

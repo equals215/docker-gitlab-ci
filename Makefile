@@ -1,3 +1,3 @@
 all: build
-build: 
-	docker build -t nohaapav/docker-gitlab-runner . 
+build:
+	docker build -t equals215/docker-gitlab-runner . 

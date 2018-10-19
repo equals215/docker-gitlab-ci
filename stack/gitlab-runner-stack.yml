@@ -5,7 +5,7 @@ services:
     image: equals215/gitlab-runner:latest
     environment:
       - GITLAB_URL=${GITLAB_URL}
-      - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN
+      - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
     networks:
       - net
     deploy:

@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  gitlab-runner:
+    image: ikus060/gitlab-runner:latest
+    environment:
+      - GITLAB_URL=${GITLAB_URL}
+      - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - net
+    deploy:
+      mode: replicated
+      replicas: 10
+      placement:
+        constraints: [node.role == worker]
+
+networks:
+  net:
+    external:
+      name: ci_net

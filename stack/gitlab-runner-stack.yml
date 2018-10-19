@@ -2,12 +2,10 @@ version: '3'
 
 services:
   gitlab-runner:
-    image: ikus060/gitlab-runner:latest
+    image: equals215/gitlab-runner:latest
     environment:
       - GITLAB_URL=${GITLAB_URL}
-      - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN
     networks:
       - net
     deploy:

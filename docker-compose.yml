@@ -9,10 +9,10 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         external_url '${GITLAB_URL}'
         pages_external_url '${GITLAB_PAGES_URL}'
-    ports: 
+    ports:
       - '80:80'
       - '443:443'
-    volumes: 
+    volumes:
       - '/srv/gitlab/config:/etc/gitlab'
       - '/srv/gitlab/log:/var/log/gitlab'
       - '/srv/gitlab/data:/var/opt/gitlab'
@@ -33,12 +33,10 @@ services:
         condition: on-failure
         delay: 5s
         max_attempts: 3
-        
+
   runner:
-    image: 'ikus060/gitlab-runner:latest'
+    image: 'equals215/gitlab-runner:latest'
     restart: always
-    volumes: 
-      - /var/run/docker.sock:/var/run/docker.sock
     networks:
     - ci
     depends_on:
@@ -49,10 +47,10 @@ services:
       - REGISTER_LOCKED=false
       - GITLAB_CONCURRENT=4
       - GITLAB_REGISTER_ARGS=--docker-volumes /etc/ssl/certs:/etc/ssl/certs:ro --docker-volumes /usr/local/share/ca-certificates/pki:/usr/local/share/ca-certificates/pki:ro
-    deploy: 
+    deploy:
       mode: global
       placement:
         constraints: [node.role == worker]
-        
+
 networks:
   ci:

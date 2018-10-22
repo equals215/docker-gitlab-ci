@@ -1,4 +1,5 @@
-version: '3'
+version: '3.4'
+# https://docs.gitlab.com/omnibus/docker/#install-gitlab-using-docker-compose
 
 services:
   web:
@@ -29,6 +30,29 @@ services:
         failure_action: pause
         order: start-first
         monitor: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  runner:
+    image: 'equals215/gitlab-runner:latest'
+    restart: always
+    networks:
+    - ci
+    depends_on:
+    - "web"
+    environment:
+      - GITLAB_URL=https://web/
+      - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
+      - REGISTER_LOCKED=false
+      - GITLAB_CONCURRENT=4
+      - GITLAB_REGISTER_ARGS=--docker-volumes /etc/ssl/certs:/etc/ssl/certs:ro --docker-volumes /usr/local/share/ca-certificates/pki:/usr/local/share/ca-certificates/pki:ro
+    deploy:
+      mode: replicated
+      replicas: 10
+      placement:
+        constraints: [node.role == worker]
       restart_policy:
         condition: on-failure
         delay: 5s

@@ -8,6 +8,7 @@ services:
       - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
     networks:
       - net
+    privileged: true
     deploy:
       mode: replicated
       replicas: 10

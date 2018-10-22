@@ -6,6 +6,9 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url '${GITLAB_URL}'
+        letsencrypt['enable'] = true
+        external_url "https://gitlab.example.com"
+        letsencrypt['contact_emails'] = ['foo@email.com']
     ports:
       - '80:80'
       - '443:443'

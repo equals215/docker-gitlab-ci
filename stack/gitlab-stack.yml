@@ -6,7 +6,6 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url '${GITLAB_URL}'
-        pages_external_url '${GITLAB_PAGES_URL}'
     ports:
       - '80:80'
       - '443:443'

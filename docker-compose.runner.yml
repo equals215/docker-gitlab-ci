@@ -5,6 +5,7 @@ services:
   runner:
     image: 'equals215/gitlab-runner:latest'
     restart: always
+    privileged: true
     environment:
       - GITLAB_URL=${GITLAB_URL}
       - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}

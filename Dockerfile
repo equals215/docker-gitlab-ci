@@ -9,6 +9,7 @@ RUN apk add --no-cache \
     git \
     openssl \
     tzdata \
+    curl \
     wget
 
 ARG DOCKER_MACHINE_VERSION=0.15.0

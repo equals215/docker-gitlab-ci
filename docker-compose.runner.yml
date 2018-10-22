@@ -1,0 +1,13 @@
+version: '3.4'
+# https://docs.gitlab.com/omnibus/docker/#install-gitlab-using-docker-compose
+
+services:
+  runner:
+    image: 'equals215/gitlab-runner:latest'
+    restart: always
+    environment:
+      - GITLAB_URL=${GITLAB_URL}
+      - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
+      - REGISTER_LOCKED=false
+      - GITLAB_CONCURRENT=4
+      - GITLAB_REGISTER_ARGS=--docker-volumes /etc/ssl/certs:/etc/ssl/certs:ro --docker-volumes /usr/local/share/ca-certificates/pki:/usr/local/share/ca-certificates/pki:ro

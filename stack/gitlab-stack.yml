@@ -12,9 +12,9 @@ services:
       - '443:443'
       - '2222:22'
     volumes:
-      - '/srv/gitlab/config:/etc/gitlab'
-      - '/srv/gitlab/log:/var/log/gitlab'
-      - '/srv/gitlab/data:/var/opt/gitlab'
+      - /srv/gitlab/config:/etc/gitlab
+      - /srv/gitlab/log:/var/log/gitlab
+      - /srv/gitlab/data:/var/opt/gitlab
     networks:
     - ci
     deploy:

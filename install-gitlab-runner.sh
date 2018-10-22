@@ -8,4 +8,4 @@ read gitlab_url
 export GITLAB_URL=${gitlab_url}
 export GITLAB_RUNNER_TOKEN=${gitlab_runner_token}
 
-docker stack deploy -c stack/gitlab-runner-stack.yml ci
+docker stack deploy -c stack/gitlab-runner-stack.yml gitlab

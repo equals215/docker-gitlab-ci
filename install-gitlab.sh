@@ -5,4 +5,4 @@ read gitlab_url
 
 export GITLAB_URL=${gitlab_url}
 
-docker stack deploy -c stack/gitlab-stack.yml ci
+docker stack deploy -c stack/gitlab-stack.yml gitlab

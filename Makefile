@@ -1,5 +1,5 @@
-all: build deploy
+all: build
 build:
 	docker build -t equals215/gitlab-runner .
-deploy:
+deploy: build
 	docker push equals215/gitlab-runner

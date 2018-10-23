@@ -1,0 +1,3 @@
+[submodule "runner-manager"]
+	path = runner-manager
+	url = https://github.com/taskcluster/dind-service.git

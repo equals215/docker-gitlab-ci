@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -x
 
+(dockerd-entrypoint.sh &)
+
 pid=0
 token=()
 

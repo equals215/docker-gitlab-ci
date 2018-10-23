@@ -36,4 +36,4 @@ COPY runner.sh /runner.sh
 RUN chmod +x /runner.sh
 
 ENTRYPOINT ["dockerd-entrypoint.sh"]
-CMD ["/runner.sh"]
+CMD ["bash", "/runner.sh"]
